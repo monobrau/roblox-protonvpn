@@ -17,10 +17,10 @@ $files = @($files | Sort-Object FullName -Unique)
 
 if ($files.Count -eq 0) {
     Write-Output 'No Roblox executables under the usual install folders.'
-    Write-Output 'Install Roblox, then run this again and add the printed paths in Proton VPN Include mode.'
+    Write-Output 'Expected them under %LOCALAPPDATA%\Roblox.'
     exit 0
 }
 
 $files | Select-Object Name, LastWriteTime, FullName | Format-Table -AutoSize
 Write-Output ''
-Write-Output 'Add these paths in Proton VPN: Split tunneling, Include mode. Re-run after Roblox updates.'
+Write-Output 'Fail-closed mode blocks these paths on non-Proton adapters. Run Sync-RobloxFailClosed.ps1 -Install once.'
